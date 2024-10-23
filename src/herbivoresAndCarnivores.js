@@ -12,8 +12,8 @@ class Animal {
     Animal.alive = [...Animal.alive, this];
   }
 
-  removeAnimal() {
-    Animal.alive = Animal.alive.filter((el) => el.health > 0);
+  removeAnimal(animal) {
+    Animal.alive = Animal.alive.filter((el) => el !== animal);
   }
 }
 
@@ -31,7 +31,7 @@ class Carnivore extends Animal {
       herbivore.health -= 50;
 
       if (herbivore.health <= 0) {
-        super.removeAnimal();
+        super.removeAnimal(herbivore);
       }
     }
   }
